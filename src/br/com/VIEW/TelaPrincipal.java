@@ -27,17 +27,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
+        sMenuClientes = new javax.swing.JMenuItem();
+        sMenuUsuarios = new javax.swing.JMenuItem();
+        menuOpcoes = new javax.swing.JMenu();
+        sMenuSair = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        menuCadastro.setText("Cadastro");
+
+        sMenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clienteicon.png"))); // NOI18N
+        sMenuClientes.setText("Clientes");
+        menuCadastro.add(sMenuClientes);
+
+        sMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioicon.png"))); // NOI18N
+        sMenuUsuarios.setText("Usuários");
+        menuCadastro.add(sMenuUsuarios);
+
+        jMenuBar1.add(menuCadastro);
+
+        menuOpcoes.setText("Opções");
+
+        sMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairicon.png"))); // NOI18N
+        sMenuSair.setText("Sair");
+        menuOpcoes.add(sMenuSair);
+
+        jMenuBar1.add(menuOpcoes);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 537, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 411, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +108,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenuItem sMenuClientes;
+    private javax.swing.JMenuItem sMenuSair;
+    private javax.swing.JMenuItem sMenuUsuarios;
     // End of variables declaration//GEN-END:variables
 }
