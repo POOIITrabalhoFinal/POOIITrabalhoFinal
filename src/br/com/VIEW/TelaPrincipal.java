@@ -5,6 +5,8 @@
  */
 package br.com.VIEW;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -35,11 +37,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         menuCadastro.setText("Cadastro");
 
         sMenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clienteicon.png"))); // NOI18N
         sMenuClientes.setText("Clientes");
+        sMenuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuClientesActionPerformed(evt);
+            }
+        });
         menuCadastro.add(sMenuClientes);
 
         sMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioicon.png"))); // NOI18N
@@ -70,11 +78,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
+        TelaCadastroClientes tCadClientes =  new TelaCadastroClientes();
+        tCadClientes.setVisible(true);
+    }//GEN-LAST:event_sMenuClientesActionPerformed
+
+     private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        TelaCadastroUsuarios tUsuarios = new TelaCadastroUsuarios();
+        tUsuarios.setVisible(true);
+        
+    }                                             
+
+    private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?",
+                "Sair", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            dispose();
+        }
+    }                                         
+                              
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
