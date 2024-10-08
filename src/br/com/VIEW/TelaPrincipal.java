@@ -33,12 +33,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadastro = new javax.swing.JMenu();
         sMenuClientes = new javax.swing.JMenuItem();
         sMenuUsuarios = new javax.swing.JMenuItem();
+        sMenuAgenda = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
         sMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadastroicon.jpeg"))); // NOI18N
         menuCadastro.setText("Cadastro");
 
         sMenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clienteicon.png"))); // NOI18N
@@ -54,8 +56,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sMenuUsuarios.setText("Usuários");
         menuCadastro.add(sMenuUsuarios);
 
+        sMenuAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agendaicon.jpeg"))); // NOI18N
+        sMenuAgenda.setText("Agenda");
+        sMenuAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuAgendaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(sMenuAgenda);
+
         jMenuBar1.add(menuCadastro);
 
+        menuOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/opcoesicon.jpeg"))); // NOI18N
         menuOpcoes.setText("Opções");
 
         sMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairicon.png"))); // NOI18N
@@ -85,6 +97,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaCadastroClientes tCadClientes =  new TelaCadastroClientes();
         tCadClientes.setVisible(true);
     }//GEN-LAST:event_sMenuClientesActionPerformed
+
+    private void sMenuAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuAgendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sMenuAgendaActionPerformed
 
      private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {                                              
         TelaCadastroUsuarios tUsuarios = new TelaCadastroUsuarios();
@@ -136,6 +152,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenuItem sMenuAgenda;
     private javax.swing.JMenuItem sMenuClientes;
     private javax.swing.JMenuItem sMenuSair;
     private javax.swing.JMenuItem sMenuUsuarios;

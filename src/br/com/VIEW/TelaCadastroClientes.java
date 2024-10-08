@@ -123,7 +123,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
             }
         });
 
-        btnCadastro.setText("cadastrar");
+        btnCadastro.setText("Cadastrar");
         btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastroActionPerformed(evt);
@@ -138,7 +138,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                 .addComponent(lblConexaoSql)
                 .addGap(114, 114, 114)
                 .addComponent(btnCadastro)
-                .addGap(0, 160, Short.MAX_VALUE))
+                .addGap(0, 158, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(39, 39, 39)
@@ -159,7 +159,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                                     .addComponent(jLabel4)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtTelefoneCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(txtTelefoneCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                                 .addComponent(txtEmailCliente)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel7)
