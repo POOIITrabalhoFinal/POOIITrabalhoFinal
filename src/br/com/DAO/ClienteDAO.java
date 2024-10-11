@@ -14,7 +14,7 @@ public class ClienteDAO {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public void cadastrarUsuario(ClienteDTO objClienteDTO) {
+    public void cadastrarCliente(ClienteDTO objClienteDTO) {
         String sql = "insert into tb_clientes(id_clientes, nome, endereco, telefone, email, cpf_cnpj) values(?, ?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conector();
 
@@ -23,9 +23,9 @@ public class ClienteDAO {
             pst.setInt(1, objClienteDTO.getId_cliente());
             pst.setString(2, objClienteDTO.getNomeCliente());
             pst.setString(3, objClienteDTO.getEndCliente());
-            pst.setString(4, objClienteDTO.getTelCliente());
+            pst.setInt(4, objClienteDTO.getTelCliente());
             pst.setString(5, objClienteDTO.getEmailCliente());
-            pst.setString(6, objClienteDTO.getCpf_cnpjCliente());
+            pst.setInt(6, objClienteDTO.getCpf_cnpjCliente());
 
             int res = pst.executeUpdate();
             if (res == 1) {
@@ -83,9 +83,9 @@ public class ClienteDAO {
             pst.setInt(6, objClienteDTO.getId_cliente());
             pst.setString(1, objClienteDTO.getNomeCliente());
             pst.setString(2, objClienteDTO.getEndCliente());
-            pst.setString(3, objClienteDTO.getTelCliente());
+            pst.setInt(3, objClienteDTO.getTelCliente());
             pst.setString(4, objClienteDTO.getEmailCliente());
-            pst.setString(5, objClienteDTO.getCpf_cnpjCliente());
+            pst.setInt(5, objClienteDTO.getCpf_cnpjCliente());
 
             int add = pst.executeUpdate();
             if (add > 0) {

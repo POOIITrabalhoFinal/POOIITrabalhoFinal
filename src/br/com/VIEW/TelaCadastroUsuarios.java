@@ -216,6 +216,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtIDUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDUsuarioActionPerformed

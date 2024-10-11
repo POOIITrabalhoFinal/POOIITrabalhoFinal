@@ -5,7 +5,9 @@
  */
 package br.com.VIEW;
 
+import br.com.DAO.ClienteDAO;
 import br.com.DAO.ConexaoDAO;
+import br.com.DTO.ClienteDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,8 +38,8 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         }
 
     }
-    
-     public void cadastrar() {
+
+    public void cadastrar() {
         String sql = "insert into clientes(id_clientes, nome, endereco, telefone, email, cpf_cnpj) values(?, ?, ?, ?, ?, ?)";
 
         try {
@@ -280,7 +282,41 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfClienteActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        cadastrar();
+
+        if (txtIDCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o campo ID");
+        } else if (txtNomeCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o campo Nome");
+        } else if (txtEnderecoCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o campo Endereço");
+        } else if (txtTelefoneCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o campo Telefone.");
+        } else if (txtCpfCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o campo CPF/CNPJ");
+        } else if (txtEmailCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o campo E-mail");
+        } else {
+
+            // Captura de dados no JFrame
+            int id_cliente = Integer.parseInt(txtIDCliente.getText());
+            String nome_cliente = txtNomeCliente.getText();
+            String endereco_cliente = txtEnderecoCliente.getText();
+            int telefone_cliente = Integer.parseInt(txtTelefoneCliente.getText());
+            int cpfcnpj_cliente = Integer.parseInt(txtCpfCliente.getText());
+            String email_cliente = txtEmailCliente.getText();
+            
+            // Transferência
+            ClienteDTO objClienteDTO = new ClienteDTO();
+            objClienteDTO.setId_cliente(id_cliente);
+            objClienteDTO.setNomeCliente(nome_cliente);
+            objClienteDTO.setEndCliente(endereco_cliente);
+            objClienteDTO.setTelCliente(telefone_cliente);
+            objClienteDTO.setCpf_cnpjCliente(cpfcnpj_cliente);
+            
+            // Instanciando
+            ClienteDAO objClienteDAO = new ClienteDAO();
+            objClienteDAO.cadastrarCliente(objClienteDTO);
+        }
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
@@ -297,16 +333,24 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroClientes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroClientes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroClientes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroClientes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

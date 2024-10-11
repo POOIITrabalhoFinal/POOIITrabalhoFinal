@@ -2,8 +2,8 @@
 package br.com.DTO;
 
 public class ClienteDTO {
-    private int id_cliente;
-    private String nomeCliente, endCliente, telCliente, emailCliente, cpf_cnpjCliente;
+    private int id_cliente, telCliente, cpf_cnpjCliente;
+    private String nomeCliente, endCliente, emailCliente;
 
     public int getId_cliente() {
         return id_cliente;
@@ -29,11 +29,11 @@ public class ClienteDTO {
         this.endCliente = endCliente;
     }
 
-    public String getTelCliente() {
+    public int getTelCliente() {
         return telCliente;
     }
 
-    public void setTelCliente(String telCliente) {
+    public void setTelCliente(int telCliente) {
         this.telCliente = telCliente;
     }
 
@@ -45,11 +45,11 @@ public class ClienteDTO {
         this.emailCliente = emailCliente;
     }
 
-    public String getCpf_cnpjCliente() {
+    public int getCpf_cnpjCliente() {
         return cpf_cnpjCliente;
     }
 
-    public void setCpf_cnpjCliente(String cpf_cnpjCliente) {
+    public void setCpf_cnpjCliente(int cpf_cnpjCliente) {
         this.cpf_cnpjCliente = cpf_cnpjCliente;
     }
 
