@@ -93,7 +93,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        txtIDUsuario = new javax.swing.JTextField();
+        txtIDCliente = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
@@ -168,8 +168,8 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cleanicon.png"))); // NOI18N
         jButton4.setText("Limpar");
 
-        txtIDUsuario.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        txtIDUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtIDCliente.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        txtIDCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
         jLabel5.setText("ID");
@@ -192,7 +192,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(55, 55, 55)
-                                        .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +234,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -338,7 +338,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
     public static javax.swing.JTextField txtCpfCliente;
     public static javax.swing.JTextField txtEmailCliente;
     public static javax.swing.JTextField txtEnderecoCliente;
-    public static javax.swing.JTextField txtIDUsuario;
+    public static javax.swing.JTextField txtIDCliente;
     public static javax.swing.JTextField txtNomeCliente;
     public static javax.swing.JTextField txtTelefoneCliente;
     // End of variables declaration//GEN-END:variables
