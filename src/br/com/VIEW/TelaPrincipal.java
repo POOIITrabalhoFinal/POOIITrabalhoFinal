@@ -29,6 +29,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         sMenuClientes = new javax.swing.JMenuItem();
@@ -38,7 +39,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
+
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 68)); // NOI18N
+        jLabel1.setText("Tela Principal");
 
         menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadastroicon.jpeg"))); // NOI18N
         menuCadastro.setText("Cadastro");
@@ -54,6 +59,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         sMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioicon.png"))); // NOI18N
         sMenuUsuarios.setText("Usuários");
+        sMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuUsuariosActionPerformed(evt);
+            }
+        });
         menuCadastro.add(sMenuUsuarios);
 
         sMenuAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agendaicon.jpeg"))); // NOI18N
@@ -67,7 +77,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuCadastro);
 
-        menuOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/opcoesicon.jpeg"))); // NOI18N
+        menuOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/optionsicon.png"))); // NOI18N
         menuOpcoes.setText("Opções");
 
         sMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairicon.png"))); // NOI18N
@@ -82,11 +92,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jLabel1)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(164, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(164, 164, 164))
         );
 
         pack();
@@ -94,7 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
-        TelaCadastroClientes tCadClientes =  new TelaCadastroClientes();
+        TelaCadastroClientes tCadClientes = new TelaCadastroClientes();
         tCadClientes.setVisible(true);
     }//GEN-LAST:event_sMenuClientesActionPerformed
 
@@ -102,20 +118,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sMenuAgendaActionPerformed
 
-     private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuUsuariosActionPerformed
         TelaCadastroUsuarios tUsuarios = new TelaCadastroUsuarios();
         tUsuarios.setVisible(true);
-        
-    }                                             
 
-    private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    }//GEN-LAST:event_sMenuUsuariosActionPerformed
+
+
+    private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?",
                 "Sair", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             dispose();
         }
-    }                                         
-                              
-    
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -149,6 +165,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuOpcoes;

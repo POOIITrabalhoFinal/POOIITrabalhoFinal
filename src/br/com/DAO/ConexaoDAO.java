@@ -14,14 +14,14 @@ public class ConexaoDAO {
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://127.0.0.1:3306/bdtrabalhofinal";
         String user = "root";
-        String password = "arthur12";
+        String password = "root";
 
         try {
             Class.forName(driver);
             conexao = DriverManager.getConnection(url, user, password);
             return conexao;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Conexao falhou: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Conexão falhou: " + e.getMessage());
             return null;
         }
 
