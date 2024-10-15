@@ -26,7 +26,7 @@ public class UsuarioDAO {
 
             int res = pst.executeUpdate();
             if (res == 1) {
-                JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso.");
+                JOptionPane.showMessageDialog(null, "SUCESSO!\nCadastro feito com êxito.");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar.");
             }
@@ -34,9 +34,9 @@ public class UsuarioDAO {
 
         } catch (Exception e) {
             if (e.getMessage().contains("tb_usuarios.PRIMARY")) {
-                JOptionPane.showMessageDialog(null, "ID já está em uso.");
+                JOptionPane.showMessageDialog(null, "ERRO: ID já está em uso.");
             } else if (e.getMessage().contains("tb_usuarios.nome_usuario_UNIQUE")) {
-                JOptionPane.showMessageDialog(null, "Nome de usuário já está em uso.");
+                JOptionPane.showMessageDialog(null, "ERRO: Nome de usuário já está em uso.");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao inserir usuário: " + e);
             }
@@ -59,7 +59,7 @@ public class UsuarioDAO {
                 TelaCadastroUsuarios.txtSenha.setText(rs.getString(5));
                 conexao.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Usuário não cadastrado.");
+                JOptionPane.showMessageDialog(null, "ERRO: Usuário não cadastrado.");
                 limpar();
             }
         } catch (Exception e) {
@@ -86,7 +86,7 @@ public class UsuarioDAO {
                 principal.setVisible(true);
                 conexao.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos");
+                JOptionPane.showMessageDialog(null, "ERRO: Usuário e/ou senha inválidos");
             }
 
         } catch (Exception e) {
@@ -109,9 +109,9 @@ public class UsuarioDAO {
             int add = pst.executeUpdate();
             if (add > 0) {
                 conexao.close();
-                JOptionPane.showMessageDialog(null, "Usuário editado com sucesso.");
+                JOptionPane.showMessageDialog(null, "SUCESSO!\nUsuário editado com êxito.");
             } else {
-                JOptionPane.showMessageDialog(null, "Usuário não existe.");
+                JOptionPane.showMessageDialog(null, "ERRO: Usuário não existe.");
                 conexao.close();
                 limpar();
             }
@@ -130,7 +130,7 @@ public class UsuarioDAO {
             int add = pst.executeUpdate();
             if (add > 0) {
                 conexao.close();
-                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.");
+                JOptionPane.showMessageDialog(null, "SUCESSO!\nUsuário excluído com êxito.");
                 limpar();
             }
         } catch (Exception e) {
@@ -140,7 +140,7 @@ public class UsuarioDAO {
 
     public void limpar() {
         TelaCadastroUsuarios.txtIDUsuario.setText(null);
-        TelaCadastroUsuarios.txtUsernameUsuario.setText(null);
+        TelaCadastroUsuarios.txtNomeUsuario.setText(null);
         TelaCadastroUsuarios.txtEmailUsuario.setText(null);
         TelaCadastroUsuarios.txtUsernameUsuario.setText(null);
         TelaCadastroUsuarios.txtSenha.setText(null);

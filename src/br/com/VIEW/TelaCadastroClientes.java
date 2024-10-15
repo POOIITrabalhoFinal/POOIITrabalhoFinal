@@ -118,6 +118,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         btnCadastro.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         btnCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registericon.png"))); // NOI18N
         btnCadastro.setText("Cadastrar");
+        btnCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastroActionPerformed(evt);
@@ -129,6 +130,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchicon.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -137,6 +139,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
 
         btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deleteicon.png"))); // NOI18N
         btnDeletar.setText("Deletar");
+        btnDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeletarActionPerformed(evt);
@@ -145,6 +148,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editicon.png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -153,6 +157,7 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cleanicon.png"))); // NOI18N
         btnLimpar.setText("Limpar");
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -166,6 +171,12 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         jLabel5.setText("ID");
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/return_icon.png"))); // NOI18N
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -345,16 +356,19 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        // Captura de dados no JFrames
-        String id_cliente = txtIDCliente.getText();
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja deletar este cliente?",
+                "Deletar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {  
+            // Captura de dados no JFrames
+            String id_cliente = txtIDCliente.getText();
 
-        // Transferência
-        ClienteDTO objClienteDTO = new ClienteDTO();
-        objClienteDTO.setId_cliente(Integer.parseInt(id_cliente));
-        
-        // Instanciando
-        ClienteDAO objClienteDAO = new ClienteDAO();
-        objClienteDAO.apagar(objClienteDTO);
+            // Transferência
+            ClienteDTO objClienteDTO = new ClienteDTO();
+            objClienteDTO.setId_cliente(Integer.parseInt(id_cliente));
+
+            // Instanciando
+            ClienteDAO objClienteDAO = new ClienteDAO();
+            objClienteDAO.apagar(objClienteDTO);
+        }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -379,6 +393,12 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         ClienteDAO objClienteDAO = new ClienteDAO();
         objClienteDAO.editar(objClienteDTO);
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        TelaPrincipal tPrincipal = new TelaPrincipal();
+        tPrincipal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments

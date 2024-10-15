@@ -47,9 +47,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadastroicon.jpeg"))); // NOI18N
         menuCadastro.setText("Cadastro");
+        menuCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         sMenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clienteicon.png"))); // NOI18N
         sMenuClientes.setText("Clientes");
+        sMenuClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sMenuClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuClientesActionPerformed(evt);
@@ -59,6 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         sMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioicon.png"))); // NOI18N
         sMenuUsuarios.setText("Usuários");
+        sMenuUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuUsuariosActionPerformed(evt);
@@ -68,6 +71,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         sMenuAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agendaicon.jpeg"))); // NOI18N
         sMenuAgenda.setText("Agenda");
+        sMenuAgenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sMenuAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuAgendaActionPerformed(evt);
@@ -79,9 +83,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/optionsicon.png"))); // NOI18N
         menuOpcoes.setText("Opções");
+        menuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         sMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairicon.png"))); // NOI18N
         sMenuSair.setText("Sair");
+        sMenuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuSairActionPerformed(evt);
+            }
+        });
         menuOpcoes.add(sMenuSair);
 
         jMenuBar1.add(menuOpcoes);
@@ -112,25 +123,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
         TelaCadastroClientes tCadClientes = new TelaCadastroClientes();
         tCadClientes.setVisible(true);
+        dispose();
     }//GEN-LAST:event_sMenuClientesActionPerformed
 
     private void sMenuAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuAgendaActionPerformed
-        // TODO add your handling code here:
+        TelaAgenda tAgenda = new TelaAgenda();
+        tAgenda.setVisible(true);
+        dispose();
     }//GEN-LAST:event_sMenuAgendaActionPerformed
 
     private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuUsuariosActionPerformed
         TelaCadastroUsuarios tUsuarios = new TelaCadastroUsuarios();
         tUsuarios.setVisible(true);
-
+        dispose();
     }//GEN-LAST:event_sMenuUsuariosActionPerformed
 
-
-    private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {
+    private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuSairActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?",
                 "Sair", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             dispose();
         }
-    }
+    }//GEN-LAST:event_sMenuSairActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
