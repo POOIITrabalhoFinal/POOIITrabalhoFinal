@@ -39,38 +39,6 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
 
     }
 
-    public void cadastrar() {
-        String sql = "insert into clientes(id_clientes, nome, endereco, telefone, email, cpf_cnpj) values(?, ?, ?, ?, ?, ?)";
-
-        try {
-            pst = conexao.prepareStatement(sql);
-            pst.setString(2, txtNomeCliente.getText());
-            pst.setString(3, txtEnderecoCliente.getText());
-            pst.setString(4, txtTelefoneCliente.getText());
-            pst.setString(5, txtEmailCliente.getText());
-            pst.setString(6, txtCpfCliente.getText());
-            rs = pst.executeQuery();
-
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
-                txtNomeCliente.setText(null);
-                txtEnderecoCliente.setText(null);
-                txtTelefoneCliente.setText(null);
-                txtEmailCliente.setText(null);
-                txtCpfCliente.setText(null);
-
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Método Pesquisar " + e);
-
-        }
-
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -91,12 +59,13 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         txtCpfCliente = new javax.swing.JTextField();
         btnCadastro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         txtIDCliente = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -158,23 +127,45 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
         jLabel1.setText("Cadastro de Clientes");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchicon.png"))); // NOI18N
-        jButton1.setText("Pesquisar");
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchicon.png"))); // NOI18N
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deleteicon.png"))); // NOI18N
-        jButton2.setText("Deletar");
+        btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deleteicon.png"))); // NOI18N
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editicon.png"))); // NOI18N
-        jButton3.setText("Editar");
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editicon.png"))); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cleanicon.png"))); // NOI18N
-        jButton4.setText("Limpar");
+        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cleanicon.png"))); // NOI18N
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         txtIDCliente.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
         txtIDCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
         jLabel5.setText("ID");
+
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/return_icon.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,14 +208,15 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                                             .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnPesquisar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnDeletar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(btnLimpar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,8 +224,11 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblConexaoSql))
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,11 +257,11 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
                 .addComponent(btnCadastro)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(btnLimpar)
+                    .addComponent(btnDeletar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnPesquisar))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,23 +296,89 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
             int id_cliente = Integer.parseInt(txtIDCliente.getText());
             String nome_cliente = txtNomeCliente.getText();
             String endereco_cliente = txtEnderecoCliente.getText();
-            int telefone_cliente = Integer.parseInt(txtTelefoneCliente.getText());
-            int cpfcnpj_cliente = Integer.parseInt(txtCpfCliente.getText());
+            String telefone_cliente = txtTelefoneCliente.getText();
             String email_cliente = txtEmailCliente.getText();
-            
+            String cpfcnpj_cliente = txtCpfCliente.getText();
+
             // Transferência
             ClienteDTO objClienteDTO = new ClienteDTO();
             objClienteDTO.setId_cliente(id_cliente);
             objClienteDTO.setNomeCliente(nome_cliente);
             objClienteDTO.setEndCliente(endereco_cliente);
             objClienteDTO.setTelCliente(telefone_cliente);
+            objClienteDTO.setEmailCliente(email_cliente);
             objClienteDTO.setCpf_cnpjCliente(cpfcnpj_cliente);
-            
+
             // Instanciando
             ClienteDAO objClienteDAO = new ClienteDAO();
             objClienteDAO.cadastrarCliente(objClienteDTO);
+            objClienteDAO.limpar();
         }
     }//GEN-LAST:event_btnCadastroActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // Captura de dados no JFrames
+        String id_cliente = txtIDCliente.getText();
+
+        // Transferência
+        ClienteDTO objClienteDTO = new ClienteDTO();
+        objClienteDTO.setId_cliente(Integer.parseInt(id_cliente));
+
+        // Instanciando
+        ClienteDAO objClienteDAO = new ClienteDAO();
+        objClienteDAO.pesquisar(objClienteDTO);
+
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+
+        if (txtIDCliente.getText().isEmpty() && txtNomeCliente.getText().isEmpty()
+                && txtEnderecoCliente.getText().isEmpty() && txtTelefoneCliente.getText().isEmpty()
+                && txtEmailCliente.getText().isEmpty() && txtCpfCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO: Não há nada a ser limpado.");
+        } else {
+
+            // Instanciando
+            ClienteDAO objClienteDAO = new ClienteDAO();
+            objClienteDAO.limpar();
+        }
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        // Captura de dados no JFrames
+        String id_cliente = txtIDCliente.getText();
+
+        // Transferência
+        ClienteDTO objClienteDTO = new ClienteDTO();
+        objClienteDTO.setId_cliente(Integer.parseInt(id_cliente));
+        
+        // Instanciando
+        ClienteDAO objClienteDAO = new ClienteDAO();
+        objClienteDAO.apagar(objClienteDTO);
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // Captura de dados no JFrames
+        int id_cliente = Integer.parseInt(txtIDCliente.getText());
+        String nome_cliente = txtNomeCliente.getText();
+        String endereco_cliente = txtEnderecoCliente.getText();
+        String telefone_cliente = txtTelefoneCliente.getText();
+        String email_cliente = txtEmailCliente.getText();
+        String cpfcnpj_cliente = txtCpfCliente.getText();
+
+        // Transferência
+        ClienteDTO objClienteDTO = new ClienteDTO();
+        objClienteDTO.setId_cliente(id_cliente);
+        objClienteDTO.setNomeCliente(nome_cliente);
+        objClienteDTO.setEndCliente(endereco_cliente);
+        objClienteDTO.setTelCliente(telefone_cliente);
+        objClienteDTO.setEmailCliente(email_cliente);
+        objClienteDTO.setCpf_cnpjCliente(cpfcnpj_cliente);
+
+        // Instanciando
+        ClienteDAO objClienteDAO = new ClienteDAO();
+        objClienteDAO.editar(objClienteDTO);
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,10 +425,11 @@ public class TelaCadastroClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

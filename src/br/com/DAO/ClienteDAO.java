@@ -1,4 +1,3 @@
-
 package br.com.DAO;
 
 import br.com.DTO.ClienteDTO;
@@ -23,13 +22,13 @@ public class ClienteDAO {
             pst.setInt(1, objClienteDTO.getId_cliente());
             pst.setString(2, objClienteDTO.getNomeCliente());
             pst.setString(3, objClienteDTO.getEndCliente());
-            pst.setInt(4, objClienteDTO.getTelCliente());
+            pst.setString(4, objClienteDTO.getTelCliente());
             pst.setString(5, objClienteDTO.getEmailCliente());
-            pst.setInt(6, objClienteDTO.getCpf_cnpjCliente());
+            pst.setString(6, objClienteDTO.getCpf_cnpjCliente());
 
             int res = pst.executeUpdate();
             if (res == 1) {
-                JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso.");
+                JOptionPane.showMessageDialog(null, "SUCESSO!\nCadastro feito com êxito.");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar.");
             }
@@ -37,11 +36,11 @@ public class ClienteDAO {
 
         } catch (Exception e) {
             if (e.getMessage().contains("tb_clientes.PRIMARY")) {
-                JOptionPane.showMessageDialog(null, "ID já está em uso.");
+                JOptionPane.showMessageDialog(null, "ERRO: ID já está em uso.");
             } else if (e.getMessage().contains("tb_clientes.telefone_UNIQUE")) {
-                JOptionPane.showMessageDialog(null, "Telefone já está em uso.");
+                JOptionPane.showMessageDialog(null, "ERRO: Telefone já está em uso.");
             } else if (e.getMessage().contains("tb_clientes.cpf_cnpj_UNIQUE")) {
-                JOptionPane.showMessageDialog(null, "CPF ou CNPJ já está em uso.");
+                JOptionPane.showMessageDialog(null, "ERRO: CPF ou CNPJ já está em uso.");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente: " + e);
             }
@@ -65,7 +64,7 @@ public class ClienteDAO {
                 TelaCadastroClientes.txtCpfCliente.setText(rs.getString(6));
                 conexao.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Cliente não cadastrado.");
+                JOptionPane.showMessageDialog(null, "ERRO: Cliente não cadastrado.");
                 limpar();
             }
         } catch (Exception e) {
@@ -83,16 +82,16 @@ public class ClienteDAO {
             pst.setInt(6, objClienteDTO.getId_cliente());
             pst.setString(1, objClienteDTO.getNomeCliente());
             pst.setString(2, objClienteDTO.getEndCliente());
-            pst.setInt(3, objClienteDTO.getTelCliente());
+            pst.setString(3, objClienteDTO.getTelCliente());
             pst.setString(4, objClienteDTO.getEmailCliente());
-            pst.setInt(5, objClienteDTO.getCpf_cnpjCliente());
+            pst.setString(5, objClienteDTO.getCpf_cnpjCliente());
 
             int add = pst.executeUpdate();
             if (add > 0) {
                 conexao.close();
-                JOptionPane.showMessageDialog(null, "Cliente editado com sucesso.");
+                JOptionPane.showMessageDialog(null, "SUCESSO!\nCliente editado com êxito.");
             } else {
-                JOptionPane.showMessageDialog(null, "Cliente não existe.");
+                JOptionPane.showMessageDialog(null, "ERRO: Cliente não existe.");
                 conexao.close();
                 limpar();
             }
@@ -111,7 +110,7 @@ public class ClienteDAO {
             int add = pst.executeUpdate();
             if (add > 0) {
                 conexao.close();
-                JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso.");
+                JOptionPane.showMessageDialog(null, "SUCESSO!\nCliente excluído com êxito.");
                 limpar();
             }
         } catch (Exception e) {
