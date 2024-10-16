@@ -5,6 +5,8 @@
  */
 package br.com.VIEW;
 
+import java.text.DateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,6 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         sMenuClientes = new javax.swing.JMenuItem();
@@ -41,17 +44,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Candara", 1, 68)); // NOI18N
         jLabel1.setText("Tela Principal");
 
+        lblData.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblData.setText("Data");
+
         menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadastroicon.jpeg"))); // NOI18N
         menuCadastro.setText("Cadastro");
-        menuCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         sMenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clienteicon.png"))); // NOI18N
         sMenuClientes.setText("Clientes");
-        sMenuClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sMenuClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         sMenuClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuClientesActionPerformed(evt);
@@ -61,7 +72,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         sMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioicon.png"))); // NOI18N
         sMenuUsuarios.setText("Usuários");
-        sMenuUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sMenuUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         sMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuUsuariosActionPerformed(evt);
@@ -71,7 +82,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         sMenuAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agendaicon.jpeg"))); // NOI18N
         sMenuAgenda.setText("Agenda");
-        sMenuAgenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sMenuAgenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         sMenuAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuAgendaActionPerformed(evt);
@@ -83,11 +94,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/optionsicon.png"))); // NOI18N
         menuOpcoes.setText("Opções");
-        menuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         sMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairicon.png"))); // NOI18N
         sMenuSair.setText("Sair");
-        sMenuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sMenuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         sMenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sMenuSairActionPerformed(evt);
@@ -104,16 +115,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblData)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(164, 164, 164))
+                .addGap(142, 142, 142)
+                .addComponent(lblData)
+                .addContainerGap())
         );
 
         pack();
@@ -144,6 +162,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_sMenuSairActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Date data = new Date();
+        DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
+        lblData.setText(formatador.format(data));
+        
+    }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -180,6 +205,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lblData;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuOpcoes;
     private javax.swing.JMenuItem sMenuAgenda;

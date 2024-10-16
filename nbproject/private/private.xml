@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aluno.saolucas/Downloads/POOIITrabalhoFinal/src/br/com/VIEW/TelaLogin.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Downloads/POOIITrabalhoFinal/src/br/com/VIEW/TelaCadastroClientes.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Downloads/POOIITrabalhoFinal/src/br/com/VIEW/TelaPrincipal.java</file>
+            <file>file:/C:/Users/ArthurServ/Documents/NetBeansProjects/POOIITrabalhoFinal-main/src/br/com/DTO/AgendaDTO.java</file>
+            <file>file:/C:/Users/ArthurServ/Documents/NetBeansProjects/POOIITrabalhoFinal-main/src/br/com/DAO/AgendaDAO.java</file>
+            <file>file:/C:/Users/ArthurServ/Documents/NetBeansProjects/POOIITrabalhoFinal-main/src/br/com/VIEW/TelaAgenda.java</file>
+            <file>file:/C:/Users/ArthurServ/Documents/NetBeansProjects/POOIITrabalhoFinal-main/src/br/com/DAO/ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>
