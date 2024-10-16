@@ -10,6 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.sql.Time;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -21,7 +25,6 @@ public class TelaAgenda extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    
     public TelaAgenda() {
         initComponents();
         conexao = ConexaoDAO.conector();
@@ -124,7 +127,7 @@ public class TelaAgenda extends javax.swing.JFrame {
 
         jLabel3.setText("Data");
 
-        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataActionPerformed(evt);
@@ -184,11 +187,11 @@ public class TelaAgenda extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                             .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIDAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtHora)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblConexaoSql)
                         .addGap(18, 18, 18)
@@ -271,7 +274,7 @@ public class TelaAgenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
-        
+
     }//GEN-LAST:event_btnPesquisaActionPerformed
 
     private void txtIDAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDAgendaActionPerformed
@@ -283,11 +286,37 @@ public class TelaAgenda extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDataActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        // Captura de dados no JFrame
+
+        // Transferência de dados
+        
+        
+        // Instanciando
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+
+        if (txtIDAgenda.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Atribua um ID a Agenda.");
+        } else if (txtIDCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Atribua um ID ao Cliente");
+        } else if (txtData.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Coloque uma data.");
+        } else if (txtHora.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Coloque uma hora.");
+        } else if (txtDesc.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Coloque uma descrição.");
+        } else {
+
+            // Captura de dados no JFrame
+
+
+            // Transferência de dados
+            
+            
+            // Instanciando
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
