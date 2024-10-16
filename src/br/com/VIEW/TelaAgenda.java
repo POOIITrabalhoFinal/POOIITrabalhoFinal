@@ -5,15 +5,14 @@
  */
 package br.com.VIEW;
 
+import br.com.DAO.AgendaDAO;
 import br.com.DAO.ConexaoDAO;
+import br.com.DTO.AgendaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import java.sql.Time;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -25,6 +24,7 @@ public class TelaAgenda extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
+    
     public TelaAgenda() {
         initComponents();
         conexao = ConexaoDAO.conector();
@@ -54,13 +54,11 @@ public class TelaAgenda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgenda = new javax.swing.JTable();
         txtPesquisa = new javax.swing.JTextField();
-        btnPesquisa = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtIDAgenda = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtIDCliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtData = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         txtHora = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -70,6 +68,8 @@ public class TelaAgenda extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtData = new javax.swing.JFormattedTextField();
 
         jFormattedTextField2.setText("jFormattedTextField2");
 
@@ -106,12 +106,16 @@ public class TelaAgenda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAgendaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAgenda);
 
-        btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchicon.png"))); // NOI18N
-        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisaActionPerformed(evt);
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyReleased(evt);
             }
         });
 
@@ -126,13 +130,6 @@ public class TelaAgenda extends javax.swing.JFrame {
         jLabel2.setText("ID Cliente");
 
         jLabel3.setText("Data");
-
-        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        txtData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Hora");
 
@@ -172,6 +169,15 @@ public class TelaAgenda extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchicon.png"))); // NOI18N
+
+        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,10 +194,10 @@ public class TelaAgenda extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIDAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHora)))
+                            .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtData)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblConexaoSql)
                         .addGap(18, 18, 18)
@@ -214,8 +220,8 @@ public class TelaAgenda extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60))))
         );
@@ -226,9 +232,9 @@ public class TelaAgenda extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -243,14 +249,14 @@ public class TelaAgenda extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,17 +279,9 @@ public class TelaAgenda extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
-
-    }//GEN-LAST:event_btnPesquisaActionPerformed
-
     private void txtIDAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDAgendaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDAgendaActionPerformed
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // Captura de dados no JFrame
@@ -296,7 +294,6 @@ public class TelaAgenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
         if (txtIDAgenda.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Atribua um ID a Agenda.");
         } else if (txtIDCliente.getText().isEmpty()) {
@@ -320,12 +317,52 @@ public class TelaAgenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja deletar este evento?",
+                "Deletar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {  
+            // Captura de dados no JFrames
+            String id_cliente = txtIDCliente.getText();
+
+            // Transferência
+            AgendaDTO objAgendaDTO = new AgendaDTO();
+            objAgendaDTO.setId_agenda(Integer.parseInt(id_cliente));
+
+            // Instanciando
+            AgendaDAO objAgendaDAO = new AgendaDAO();
+            objAgendaDAO.deletar(objAgendaDTO);
+        }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
+        AgendaDAO aDAO = new AgendaDAO();
+        aDAO.limpar();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
+        String desc = txtPesquisa.getText();
+        
+        AgendaDTO objAgendaDTO = new AgendaDTO();
+        objAgendaDTO.setDesc(desc);
+        
+        AgendaDAO aDAO = new AgendaDAO();
+        aDAO.pesquisa(objAgendaDTO);
+    }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    public void setCampos(){
+        int setar = tblAgenda.getSelectedRow();
+        txtIDAgenda.setText(tblAgenda.getModel().getValueAt(setar, 0).toString());
+        txtIDCliente.setText(tblAgenda.getModel().getValueAt(setar, 4).toString());
+        txtData.setText(tblAgenda.getModel().getValueAt(setar, 1).toString());
+        txtHora.setText(tblAgenda.getModel().getValueAt(setar, 2).toString());
+        txtDesc.setText(tblAgenda.getModel().getValueAt(setar, 3).toString());
+    }
+    
+    private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
+        setCampos();
+    }//GEN-LAST:event_tblAgendaMouseClicked
+
+    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,7 +403,6 @@ public class TelaAgenda extends javax.swing.JFrame {
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnLimpar;
-    private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField jFormattedTextField2;
@@ -375,15 +411,16 @@ public class TelaAgenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblConexaoSql;
     public static javax.swing.JTable tblAgenda;
-    private javax.swing.JFormattedTextField txtData;
-    private javax.swing.JTextArea txtDesc;
-    private javax.swing.JFormattedTextField txtHora;
-    private javax.swing.JTextField txtIDAgenda;
-    private javax.swing.JTextField txtIDCliente;
+    public static javax.swing.JFormattedTextField txtData;
+    public static javax.swing.JTextArea txtDesc;
+    public static javax.swing.JFormattedTextField txtHora;
+    public static javax.swing.JTextField txtIDAgenda;
+    public static javax.swing.JTextField txtIDCliente;
     public static javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

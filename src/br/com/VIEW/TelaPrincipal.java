@@ -32,7 +32,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
         lblData = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         sMenuClientes = new javax.swing.JMenuItem();
@@ -40,6 +43,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sMenuAgenda = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
         sMenuSair = new javax.swing.JMenuItem();
+
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 68)); // NOI18N
+        jLabel1.setText("Tela Principal");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 665, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -50,11 +67,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 68)); // NOI18N
-        jLabel1.setText("Tela Principal");
+        jDesktopPane2.setBackground(new java.awt.Color(51, 51, 51));
+        jDesktopPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblData.setBackground(new java.awt.Color(0, 0, 0));
         lblData.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblData.setText("Data");
+        jDesktopPane2.add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 415, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ichigobg.jpg"))); // NOI18N
+        jDesktopPane2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 450));
+
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadastroicon.jpeg"))); // NOI18N
         menuCadastro.setText("Cadastro");
@@ -114,24 +139,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblData)))
-                .addContainerGap(73, Short.MAX_VALUE))
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(142, 142, 142)
-                .addComponent(lblData)
-                .addContainerGap())
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
         );
 
         pack();
@@ -203,8 +215,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblData;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuOpcoes;
