@@ -1,7 +1,7 @@
 package br.com.DAO;
 
 import br.com.DTO.UsuarioDTO;
-import br.com.VIEW.TelaCadastroUsuarios;
+import br.com.VIEW.InternalFrameCadastroUsuarios;
 import br.com.VIEW.TelaPrincipal;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -53,10 +53,10 @@ public class UsuarioDAO {
             pst.setInt(1, objUsuarioDTO.getId_usuario());
             rs = pst.executeQuery();
             if (rs.next()) {
-                TelaCadastroUsuarios.txtUsernameUsuario.setText(rs.getString(2));
-                TelaCadastroUsuarios.txtEmailUsuario.setText(rs.getString(3));
-                TelaCadastroUsuarios.txtUsernameUsuario.setText(rs.getString(4));
-                TelaCadastroUsuarios.txtSenha.setText(rs.getString(5));
+                InternalFrameCadastroUsuarios.txtNomeUsuario.setText(rs.getString(2));
+                InternalFrameCadastroUsuarios.txtEmailUsuario.setText(rs.getString(3));
+                InternalFrameCadastroUsuarios.txtUsernameUsuario.setText(rs.getString(4));
+                InternalFrameCadastroUsuarios.txtSenha.setText(rs.getString(5));
                 conexao.close();
             } else {
                 JOptionPane.showMessageDialog(null, "ERRO: Usuário não cadastrado.");
@@ -139,10 +139,10 @@ public class UsuarioDAO {
     }
 
     public void limpar() {
-        TelaCadastroUsuarios.txtIDUsuario.setText(null);
-        TelaCadastroUsuarios.txtNomeUsuario.setText(null);
-        TelaCadastroUsuarios.txtEmailUsuario.setText(null);
-        TelaCadastroUsuarios.txtUsernameUsuario.setText(null);
-        TelaCadastroUsuarios.txtSenha.setText(null);
+        InternalFrameCadastroUsuarios.txtIDUsuario.setText(null);
+        InternalFrameCadastroUsuarios.txtNomeUsuario.setText(null);
+        InternalFrameCadastroUsuarios.txtEmailUsuario.setText(null);
+        InternalFrameCadastroUsuarios.txtUsernameUsuario.setText(null);
+        InternalFrameCadastroUsuarios.txtSenha.setText(null);
     }
 }

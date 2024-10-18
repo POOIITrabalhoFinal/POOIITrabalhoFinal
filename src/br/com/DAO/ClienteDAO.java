@@ -1,7 +1,7 @@
 package br.com.DAO;
 
 import br.com.DTO.ClienteDTO;
-import br.com.VIEW.TelaCadastroClientes;
+import br.com.VIEW.InternalFrameCadastroClientes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,11 +57,11 @@ public class ClienteDAO {
             pst.setInt(1, objClienteDTO.getId_cliente());
             rs = pst.executeQuery();
             if (rs.next()) {
-                TelaCadastroClientes.txtNomeCliente.setText(rs.getString(2));
-                TelaCadastroClientes.txtEnderecoCliente.setText(rs.getString(3));
-                TelaCadastroClientes.txtTelefoneCliente.setText(rs.getString(4));
-                TelaCadastroClientes.txtEmailCliente.setText(rs.getString(5));
-                TelaCadastroClientes.txtCpfCliente.setText(rs.getString(6));
+                InternalFrameCadastroClientes.txtNomeCliente.setText(rs.getString(2));
+                InternalFrameCadastroClientes.txtEnderecoCliente.setText(rs.getString(3));
+                InternalFrameCadastroClientes.txtTelefoneCliente.setText(rs.getString(4));
+                InternalFrameCadastroClientes.txtEmailCliente.setText(rs.getString(5));
+                InternalFrameCadastroClientes.txtCpfCliente.setText(rs.getString(6));
                 conexao.close();
             } else {
                 JOptionPane.showMessageDialog(null, "ERRO: Cliente não cadastrado.");
@@ -119,11 +119,11 @@ public class ClienteDAO {
     }
 
     public void limpar() {
-        TelaCadastroClientes.txtIDCliente.setText(null);
-        TelaCadastroClientes.txtNomeCliente.setText(null);
-        TelaCadastroClientes.txtEnderecoCliente.setText(null);
-        TelaCadastroClientes.txtTelefoneCliente.setText(null);
-        TelaCadastroClientes.txtEmailCliente.setText(null);
-        TelaCadastroClientes.txtCpfCliente.setText(null);
+        InternalFrameCadastroClientes.txtIDCliente.setText(null);
+        InternalFrameCadastroClientes.txtNomeCliente.setText(null);
+        InternalFrameCadastroClientes.txtEnderecoCliente.setText(null);
+        InternalFrameCadastroClientes.txtTelefoneCliente.setText(null);
+        InternalFrameCadastroClientes.txtEmailCliente.setText(null);
+        InternalFrameCadastroClientes.txtCpfCliente.setText(null);
     }
 }

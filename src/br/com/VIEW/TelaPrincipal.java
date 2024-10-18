@@ -5,8 +5,11 @@
  */
 package br.com.VIEW;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.text.DateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,9 +36,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/ichigobg.jpg"));
+        Image img = icon.getImage();
+        DesktopPane = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g)
+            {
+                g.drawImage(img, 0,0, getWidth(),
+                    getHeight(),this);
+            }
+        }
+        ;
         lblData = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         sMenuClientes = new javax.swing.JMenuItem();
@@ -67,19 +79,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jDesktopPane2.setBackground(new java.awt.Color(51, 51, 51));
-        jDesktopPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        DesktopPane.setBackground(new java.awt.Color(51, 51, 51));
+        DesktopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblData.setBackground(new java.awt.Color(0, 0, 0));
         lblData.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblData.setText("Data");
-        jDesktopPane2.add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 415, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ichigobg.jpg"))); // NOI18N
-        jDesktopPane2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 450));
+        DesktopPane.add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 750, -1, -1));
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadastroicon.jpeg"))); // NOI18N
         menuCadastro.setText("Cadastro");
@@ -139,11 +147,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
         );
 
         pack();
@@ -151,9 +159,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
-        TelaCadastroClientes tCadClientes = new TelaCadastroClientes();
+        InternalFrameCadastroClientes tCadClientes = new InternalFrameCadastroClientes ();
         tCadClientes.setVisible(true);
-        dispose();
+        DesktopPane.add(tCadClientes);
     }//GEN-LAST:event_sMenuClientesActionPerformed
 
     private void sMenuAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuAgendaActionPerformed
@@ -163,9 +171,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_sMenuAgendaActionPerformed
 
     private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuUsuariosActionPerformed
-        TelaCadastroUsuarios tUsuarios = new TelaCadastroUsuarios();
-        tUsuarios.setVisible(true);
-        dispose();
+        InternalFrameCadastroUsuarios tCadUsuarios = new InternalFrameCadastroUsuarios();
+        tCadUsuarios.setVisible(true);
+        DesktopPane.add(tCadUsuarios);
     }//GEN-LAST:event_sMenuUsuariosActionPerformed
 
     private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuSairActionPerformed
@@ -179,7 +187,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Date data = new Date();
         DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
         lblData.setText(formatador.format(data));
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
@@ -215,9 +223,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblData;
