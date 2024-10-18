@@ -24,10 +24,12 @@ public class TelaAgenda extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    
     public TelaAgenda() {
         initComponents();
         conexao = ConexaoDAO.conector();
+
+        AgendaDAO aDAO = new AgendaDAO();
+        aDAO.pesquisaAuto();
 
         if (conexao != null) {
             ImageIcon iconeSuccess = new ImageIcon("src/img/conexaosuccess.png");
@@ -57,10 +59,9 @@ public class TelaAgenda extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIDAgenda = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtIDCliente = new javax.swing.JTextField();
+        txtNomeCliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtHora = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
@@ -69,7 +70,14 @@ public class TelaAgenda extends javax.swing.JFrame {
         btnDeletar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtData = new javax.swing.JFormattedTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtMes = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtAno = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtMin = new javax.swing.JTextField();
+        txtDia = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
 
         jFormattedTextField2.setText("jFormattedTextField2");
 
@@ -95,7 +103,7 @@ public class TelaAgenda extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "id_agenda", "data", "hora", "descrição", "fk_cliente"
+                "id_agenda", "data", "hora", "descrição", "nome_cliente"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -127,13 +135,11 @@ public class TelaAgenda extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("ID Cliente");
+        jLabel2.setText("Nome Cliente");
 
         jLabel3.setText("Data");
 
         jLabel4.setText("Hora");
-
-        txtHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
 
         jLabel5.setText("Descrição");
 
@@ -171,47 +177,16 @@ public class TelaAgenda extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchicon.png"))); // NOI18N
 
-        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txtData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
-            }
-        });
+        jLabel7.setText("/");
+
+        jLabel8.setText("/");
+
+        jLabel9.setText(":");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIDAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtData)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblConexaoSql)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,6 +199,52 @@ public class TelaAgenda extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtHora)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(371, 371, 371))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtIDAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                    .addComponent(txtNomeCliente))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblConexaoSql)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,15 +264,21 @@ public class TelaAgenda extends javax.swing.JFrame {
                             .addComponent(txtIDAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2))
-                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -285,46 +312,86 @@ public class TelaAgenda extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // Captura de dados no JFrame
+        int id_agenda = Integer.parseInt(txtIDAgenda.getText());
+        String nome_cliente = txtNomeCliente.getText();
+        String d, m, a, hor, min;
+        d = txtDia.getText();
+        m = txtMes.getText();
+        a = txtAno.getText();
+        hor = txtHora.getText();
+        min = txtMin.getText();
+        String data = a + "-" + m + "-" + d;
+        String hora = hor + ":" + min;
+        String desc = txtDesc.getText();
 
         // Transferência de dados
-        
-        
+        AgendaDTO objAgendaDTO = new AgendaDTO();
+        objAgendaDTO.setId_agenda(id_agenda);
+        objAgendaDTO.setNome_cliente(nome_cliente);
+        objAgendaDTO.setData_agenda(data);
+        objAgendaDTO.setHora(hora);
+        objAgendaDTO.setDesc(desc);
+
         // Instanciando
+        AgendaDAO aDAO = new AgendaDAO();
+        aDAO.editar(objAgendaDTO);
+        aDAO.limpar();
+        aDAO.pesquisaAuto();
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         if (txtIDAgenda.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Atribua um ID a Agenda.");
-        } else if (txtIDCliente.getText().isEmpty()) {
+        } else if (txtNomeCliente.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Atribua um ID ao Cliente");
-        } else if (txtData.getText().isEmpty()) {
+        } else if (txtDia.getText().isEmpty() || txtMes.getText().isEmpty() || txtAno.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Coloque uma data.");
-        } else if (txtHora.getText().isEmpty()) {
+        } else if (txtHora.getText().isEmpty() || txtMin.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Coloque uma hora.");
         } else if (txtDesc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Coloque uma descrição.");
         } else {
 
             // Captura de dados no JFrame
-
+            int id_agenda = Integer.parseInt(txtIDAgenda.getText());
+            String nome_cliente = txtNomeCliente.getText();
+            String d, m, a, hor, min;
+            d = txtDia.getText();
+            m = txtMes.getText();
+            a = txtAno.getText();
+            hor = txtHora.getText();
+            min = txtMin.getText();
+            String data = a + "-" + m + "-" + d;
+            String hora = hor + ":" + min;
+            String desc = txtDesc.getText();
 
             // Transferência de dados
-            
-            
+            AgendaDTO objAgendaDTO = new AgendaDTO();
+            objAgendaDTO.setId_agenda(id_agenda);
+            objAgendaDTO.setNome_cliente(nome_cliente);
+            objAgendaDTO.setData_agenda(data);
+            objAgendaDTO.setHora(hora);
+            objAgendaDTO.setDesc(desc);
+
             // Instanciando
+            AgendaDAO aDAO = new AgendaDAO();
+            aDAO.registrarEvento(objAgendaDTO);
+            aDAO.limpar();
+            aDAO.pesquisaAuto();
+
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja deletar este evento?",
-                "Deletar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {  
+                "Deletar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             // Captura de dados no JFrames
-            String id_cliente = txtIDCliente.getText();
+            String id_agenda = txtIDAgenda.getText();
 
             // Transferência
             AgendaDTO objAgendaDTO = new AgendaDTO();
-            objAgendaDTO.setId_agenda(Integer.parseInt(id_cliente));
+            objAgendaDTO.setId_agenda(Integer.parseInt(id_agenda));
 
             // Instanciando
             AgendaDAO objAgendaDAO = new AgendaDAO();
@@ -339,30 +406,29 @@ public class TelaAgenda extends javax.swing.JFrame {
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
         String desc = txtPesquisa.getText();
-        
+
         AgendaDTO objAgendaDTO = new AgendaDTO();
         objAgendaDTO.setDesc(desc);
-        
+
         AgendaDAO aDAO = new AgendaDAO();
         aDAO.pesquisa(objAgendaDTO);
     }//GEN-LAST:event_txtPesquisaKeyReleased
 
-    public void setCampos(){
+    public void setCampos() {
         int setar = tblAgenda.getSelectedRow();
         txtIDAgenda.setText(tblAgenda.getModel().getValueAt(setar, 0).toString());
-        txtIDCliente.setText(tblAgenda.getModel().getValueAt(setar, 4).toString());
-        txtData.setText(tblAgenda.getModel().getValueAt(setar, 1).toString());
-        txtHora.setText(tblAgenda.getModel().getValueAt(setar, 2).toString());
+        txtNomeCliente.setText(tblAgenda.getModel().getValueAt(setar, 4).toString());
+        txtDia.setText(tblAgenda.getModel().getValueAt(setar, 1).toString().substring(8, 10));
+        txtMes.setText(tblAgenda.getModel().getValueAt(setar, 1).toString().substring(5, 7));
+        txtAno.setText(tblAgenda.getModel().getValueAt(setar, 1).toString().substring(0, 4));
+        txtHora.setText(tblAgenda.getModel().getValueAt(setar, 2).toString().substring(0, 2));
+        txtMin.setText(tblAgenda.getModel().getValueAt(setar, 2).toString().substring(3, 5));
         txtDesc.setText(tblAgenda.getModel().getValueAt(setar, 3).toString());
     }
-    
+
     private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
         setCampos();
     }//GEN-LAST:event_tblAgendaMouseClicked
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -412,15 +478,21 @@ public class TelaAgenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblConexaoSql;
     public static javax.swing.JTable tblAgenda;
-    public static javax.swing.JFormattedTextField txtData;
+    public static javax.swing.JTextField txtAno;
     public static javax.swing.JTextArea txtDesc;
-    public static javax.swing.JFormattedTextField txtHora;
+    public static javax.swing.JTextField txtDia;
+    public static javax.swing.JTextField txtHora;
     public static javax.swing.JTextField txtIDAgenda;
-    public static javax.swing.JTextField txtIDCliente;
+    public static javax.swing.JTextField txtMes;
+    public static javax.swing.JTextField txtMin;
+    public static javax.swing.JTextField txtNomeCliente;
     public static javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

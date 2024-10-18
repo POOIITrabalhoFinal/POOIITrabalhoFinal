@@ -1,14 +1,14 @@
 
 package br.com.DTO;
 
-import java.sql.Time;
-import java.sql.Date;
+
 
 public class AgendaDTO {
-    private int id_agenda, fk_cliente;
-    private Date data_agenda;
-    private Time hora;
+    private int id_agenda;
+    private String data_agenda;
+    private String hora;
     private String desc;
+    private String nome_cliente;
 
     public int getId_agenda() {
         return id_agenda;
@@ -18,27 +18,19 @@ public class AgendaDTO {
         this.id_agenda = id_agenda;
     }
 
-    public int getFk_cliente() {
-        return fk_cliente;
-    }
-
-    public void setFk_cliente(int fk_cliente) {
-        this.fk_cliente = fk_cliente;
-    }
-
-    public Date getData_agenda() {
+    public String getData_agenda() {
         return data_agenda;
     }
 
-    public void setData_agenda(Date data_agenda) {
+    public void setData_agenda(String data_agenda) {
         this.data_agenda = data_agenda;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -49,6 +41,16 @@ public class AgendaDTO {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    public String getNome_cliente() {
+        return nome_cliente;
+    }
+
+    public void setNome_cliente(String nome_cliente) {
+        this.nome_cliente = nome_cliente;
+    }
+    
+    
     
     
     

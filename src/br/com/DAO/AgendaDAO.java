@@ -20,7 +20,7 @@ public class AgendaDAO {
     ResultSet rs = null;
     
     public void pesquisa(AgendaDTO objAgendaDTO){
-        String sql = "select * from tb_agenda where descricao like ?";
+        String sql = "select * from tb_agenda where nome_clientes like ?";
         conexao = ConexaoDAO.conector();
         try {
             pst = conexao.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class AgendaDAO {
     }
     
     
-    public void pesquisaAuto(AgendaDTO objAgendaDTO){
+    public void pesquisaAuto(){
         String sql = "select * from tb_agenda";
         conexao = ConexaoDAO.conector();
         
@@ -50,8 +50,8 @@ public class AgendaDAO {
                 Date data = rs.getDate("data_agenda");
                 Time hora = rs.getTime("hora");
                 String desc = rs.getString("descricao");
-                int fk = rs.getInt("fk_clientes");
-                model.addRow(new Object[]{id, data, hora, desc, fk});
+                String nomeCli = rs.getString("nome_clientes");
+                model.addRow(new Object[]{id, data, hora, desc, nomeCli});
             }
             conexao.close();
         } catch (Exception e){
@@ -79,16 +79,16 @@ public class AgendaDAO {
     }
     
     public void registrarEvento(AgendaDTO objAgendaDTO) {
-        String sql = "insert into tb_agenda(id_agenda, data_agenda, hora, descricao, fk_cliente) values (?, ?, ?, ?, ?)";
+        String sql = "insert into tb_agenda(id_agenda, data_agenda, hora, descricao, nome_clientes) values (?, ?, ?, ?, ?)";
         conexao = new ConexaoDAO().conector();
 
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, objAgendaDTO.getId_agenda());
-            pst.setDate(2, objAgendaDTO.getData_agenda());
-            pst.setTime(3, objAgendaDTO.getHora());
+            pst.setString(2, objAgendaDTO.getData_agenda());
+            pst.setString(3, objAgendaDTO.getHora());
             pst.setString(4, objAgendaDTO.getDesc());
-            pst.setInt(5, objAgendaDTO.getFk_cliente());
+            pst.setString(5, objAgendaDTO.getNome_cliente());
 
             int res = pst.executeUpdate();
             if (res == 1) {
@@ -108,16 +108,16 @@ public class AgendaDAO {
     }
     
     public void editar(AgendaDTO objAgendaDTO) {
-        String sql = "update tb_agenda set data_agenda = ?, hora = ?, descricao = ?, fk_cliente  = ? where id_agenda = ?";
+        String sql = "update tb_agenda set data_agenda = ?, hora = ?, descricao = ?, nome_clientes  = ? where id_agenda = ?";
         conexao = ConexaoDAO.conector();
 
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(5, objAgendaDTO.getId_agenda());
-            pst.setDate(1, objAgendaDTO.getData_agenda());
-            pst.setTime(2, objAgendaDTO.getHora());
+            pst.setString(1, objAgendaDTO.getData_agenda());
+            pst.setString(2, objAgendaDTO.getHora());
             pst.setString(3, objAgendaDTO.getDesc());
-            pst.setInt(4, objAgendaDTO.getFk_cliente());
+            pst.setString(4, objAgendaDTO.getNome_cliente());
 
             int add = pst.executeUpdate();
 
@@ -136,9 +136,12 @@ public class AgendaDAO {
 
 public void limpar() {
         TelaAgenda.txtIDAgenda.setText(null);
-        TelaAgenda.txtIDCliente.setText(null);
-        TelaAgenda.txtData.setText(null);
+        TelaAgenda.txtNomeCliente.setText(null);
+        TelaAgenda.txtDia.setText(null);
+        TelaAgenda.txtMes.setText(null);
+        TelaAgenda.txtAno.setText(null);
         TelaAgenda.txtHora.setText(null);
+        TelaAgenda.txtMin.setText(null);
         TelaAgenda.txtDesc.setText(null);
     }    
     
