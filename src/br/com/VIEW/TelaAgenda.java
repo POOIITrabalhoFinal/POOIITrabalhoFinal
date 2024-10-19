@@ -121,6 +121,11 @@ public class TelaAgenda extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblAgenda);
 
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
         txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPesquisaKeyReleased(evt);
@@ -429,6 +434,10 @@ public class TelaAgenda extends javax.swing.JFrame {
     private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
         setCampos();
     }//GEN-LAST:event_tblAgendaMouseClicked
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaActionPerformed
 
     /**
      * @param args the command line arguments

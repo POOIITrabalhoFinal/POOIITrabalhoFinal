@@ -2,9 +2,9 @@ package br.com.DAO;
 
 import net.proteanit.sql.DbUtils;
 import br.com.DTO.AgendaDTO;
-import br.com.VIEW.TelaAgenda;
-import static br.com.VIEW.TelaAgenda.tblAgenda;
-import static br.com.VIEW.TelaAgenda.txtPesquisa;
+import br.com.VIEW.InternalFrameAgenda;
+import static br.com.VIEW.InternalFrameAgenda.tblAgenda;
+import static br.com.VIEW.InternalFrameAgenda.txtPesquisa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,7 +42,7 @@ public class AgendaDAO {
         try {
             pst = conexao.prepareStatement(sql);
             rs = pst.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) TelaAgenda.tblAgenda.getModel();
+            DefaultTableModel model = (DefaultTableModel) InternalFrameAgenda.tblAgenda.getModel();
             model.setNumRows(0);
             
             while (rs.next()){
@@ -135,14 +135,14 @@ public class AgendaDAO {
     }
 
 public void limpar() {
-        TelaAgenda.txtIDAgenda.setText(null);
-        TelaAgenda.txtNomeCliente.setText(null);
-        TelaAgenda.txtDia.setText(null);
-        TelaAgenda.txtMes.setText(null);
-        TelaAgenda.txtAno.setText(null);
-        TelaAgenda.txtHora.setText(null);
-        TelaAgenda.txtMin.setText(null);
-        TelaAgenda.txtDesc.setText(null);
+        InternalFrameAgenda.txtIDAgenda.setText(null);
+        InternalFrameAgenda.txtNomeCliente.setText(null);
+        InternalFrameAgenda.txtDia.setText(null);
+        InternalFrameAgenda.txtMes.setText(null);
+        InternalFrameAgenda.txtAno.setText(null);
+        InternalFrameAgenda.txtHora.setText(null);
+        InternalFrameAgenda.txtMin.setText(null);
+        InternalFrameAgenda.txtDesc.setText(null);
     }    
     
 }

@@ -38,7 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/ichigobg.jpg"));
         Image img = icon.getImage();
-        DesktopPane = new javax.swing.JDesktopPane(){
+        MyDesktopPane = new javax.swing.JDesktopPane(){
 
             public void paintComponent(Graphics g)
             {
@@ -48,6 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         ;
         lblData = new javax.swing.JLabel();
+        lblConexaoSql = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         sMenuClientes = new javax.swing.JMenuItem();
@@ -79,13 +80,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        DesktopPane.setBackground(new java.awt.Color(51, 51, 51));
-        DesktopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        MyDesktopPane.setBackground(new java.awt.Color(51, 51, 51));
 
         lblData.setBackground(new java.awt.Color(0, 0, 0));
         lblData.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblData.setText("Data");
-        DesktopPane.add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 750, -1, -1));
+
+        lblConexaoSql.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblConexaoSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/conexaofail.png"))); // NOI18N
+
+        MyDesktopPane.setLayer(lblData, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        MyDesktopPane.setLayer(lblConexaoSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout MyDesktopPaneLayout = new javax.swing.GroupLayout(MyDesktopPane);
+        MyDesktopPane.setLayout(MyDesktopPaneLayout);
+        MyDesktopPaneLayout.setHorizontalGroup(
+            MyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MyDesktopPaneLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+                .addComponent(lblConexaoSql)
+                .addContainerGap())
+        );
+        MyDesktopPaneLayout.setVerticalGroup(
+            MyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyDesktopPaneLayout.createSequentialGroup()
+                .addContainerGap(541, Short.MAX_VALUE)
+                .addGroup(MyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblConexaoSql)
+                    .addComponent(lblData))
+                .addContainerGap())
+        );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -147,11 +173,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(MyDesktopPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+            .addComponent(MyDesktopPane)
         );
 
         pack();
@@ -161,19 +187,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
         InternalFrameCadastroClientes tCadClientes = new InternalFrameCadastroClientes ();
         tCadClientes.setVisible(true);
-        DesktopPane.add(tCadClientes);
+        MyDesktopPane.add(tCadClientes);
     }//GEN-LAST:event_sMenuClientesActionPerformed
 
     private void sMenuAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuAgendaActionPerformed
-        TelaAgenda tAgenda = new TelaAgenda();
+        InternalFrameAgenda tAgenda = new InternalFrameAgenda();
         tAgenda.setVisible(true);
-        dispose();
+        MyDesktopPane.add(tAgenda);
     }//GEN-LAST:event_sMenuAgendaActionPerformed
 
     private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuUsuariosActionPerformed
         InternalFrameCadastroUsuarios tCadUsuarios = new InternalFrameCadastroUsuarios();
         tCadUsuarios.setVisible(true);
-        DesktopPane.add(tCadUsuarios);
+        MyDesktopPane.add(tCadUsuarios);
     }//GEN-LAST:event_sMenuUsuariosActionPerformed
 
     private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuSairActionPerformed
@@ -224,9 +250,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JDesktopPane DesktopPane1;
+    private javax.swing.JDesktopPane DesktopPane2;
+    private javax.swing.JDesktopPane DesktopPane3;
+    private javax.swing.JDesktopPane DesktopPane4;
+    private javax.swing.JDesktopPane MyDesktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblConexaoSql;
     private javax.swing.JLabel lblData;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuOpcoes;
