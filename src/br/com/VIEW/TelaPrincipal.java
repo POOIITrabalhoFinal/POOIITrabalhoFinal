@@ -126,7 +126,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MyDesktopPaneLayout.setVerticalGroup(
             MyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyDesktopPaneLayout.createSequentialGroup()
-                .addContainerGap(541, Short.MAX_VALUE)
+                .addContainerGap(576, Short.MAX_VALUE)
                 .addGroup(MyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblConexaoSql)
                     .addComponent(lblData))
@@ -197,7 +197,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MyDesktopPane)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MyDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
