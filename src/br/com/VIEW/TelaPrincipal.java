@@ -5,8 +5,13 @@
  */
 package br.com.VIEW;
 
+import br.com.DAO.AgendaDAO;
+import br.com.DAO.ConexaoDAO;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
@@ -18,11 +23,27 @@ import javax.swing.JOptionPane;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        conexao = ConexaoDAO.conector();
+
+        AgendaDAO aDAO = new AgendaDAO();
+        aDAO.pesquisaAuto();
+
+        if (conexao != null) {
+            ImageIcon iconeSuccess = new ImageIcon("src/img/conexao_success.png");
+            lblConexaoSql.setIcon(iconeSuccess);
+        } else {
+            ImageIcon iconeFail = new ImageIcon("src/img/conexao_fail.png");
+            lblConexaoSql.setIcon(iconeFail);
+        }
     }
 
     /**
@@ -36,7 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/img/ichigobg.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/System.gif"));
         Image img = icon.getImage();
         MyDesktopPane = new javax.swing.JDesktopPane(){
 
@@ -82,12 +103,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MyDesktopPane.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblData.setBackground(new java.awt.Color(0, 0, 0));
-        lblData.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblData.setBackground(new java.awt.Color(255, 255, 255));
+        lblData.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
+        lblData.setForeground(new java.awt.Color(255, 255, 255));
         lblData.setText("Data");
 
         lblConexaoSql.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblConexaoSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/conexaofail.png"))); // NOI18N
+        lblConexaoSql.setForeground(new java.awt.Color(255, 255, 255));
+        lblConexaoSql.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/conexao_fail.png"))); // NOI18N
 
         MyDesktopPane.setLayer(lblData, javax.swing.JLayeredPane.DEFAULT_LAYER);
         MyDesktopPane.setLayer(lblConexaoSql, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -99,7 +122,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(MyDesktopPaneLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(lblData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
                 .addComponent(lblConexaoSql)
                 .addContainerGap())
         );
@@ -185,7 +208,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
-        InternalFrameCadastroClientes tCadClientes = new InternalFrameCadastroClientes ();
+        InternalFrameCadastroClientes tCadClientes = new InternalFrameCadastroClientes();
         tCadClientes.setVisible(true);
         MyDesktopPane.add(tCadClientes);
     }//GEN-LAST:event_sMenuClientesActionPerformed
@@ -249,11 +272,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane DesktopPane;
-    private javax.swing.JDesktopPane DesktopPane1;
-    private javax.swing.JDesktopPane DesktopPane2;
-    private javax.swing.JDesktopPane DesktopPane3;
-    private javax.swing.JDesktopPane DesktopPane4;
     private javax.swing.JDesktopPane MyDesktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
