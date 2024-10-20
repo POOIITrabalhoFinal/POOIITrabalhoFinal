@@ -432,6 +432,7 @@ public class InternalFrameAgenda extends javax.swing.JInternalFrame {
         // Instanciando
         AgendaDAO objAgendaDAO = new AgendaDAO();
         objAgendaDAO.deletar(objAgendaDTO);
+        objAgendaDAO.pesquisaAuto();
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 

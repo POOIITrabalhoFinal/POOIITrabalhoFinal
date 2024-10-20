@@ -34,9 +34,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         conexao = ConexaoDAO.conector();
 
-        AgendaDAO aDAO = new AgendaDAO();
-        aDAO.pesquisaAuto();
-
         if (conexao != null) {
             ImageIcon iconeSuccess = new ImageIcon("src/img/conexao_success.png");
             lblConexaoSql.setIcon(iconeSuccess);
