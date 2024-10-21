@@ -5,7 +5,7 @@ O repositório POOIITrabalhoFinal armazena o Register System, nosso projeto e tr
 
 ## Ficha Ténica:
 
-Desenvolvedor(a): @Xenoxys1 e @eduardahermannalmeida 
+Desenvolvedores: @Xenoxys1 e @eduardahermannalmeida 
 
 Linguagens:
 
