@@ -23,5 +23,20 @@ Software:
 
 https://www.iconfinder.com
 
+
+## Preview:
+
+![Preview1](./telaLogin.png)
+
+![Preview2](./telaCadastroNovo.png)
+
+![Preview3](./telaPrincipal.png)
+
+![Preview4](./telaCadastroUsuario.png)
+
+![Preview5](./telaCadastroCliente.png)
+
+![Preview6](./telaAgenda.png)
+
 ![Footer](./Footer.gif)
 
