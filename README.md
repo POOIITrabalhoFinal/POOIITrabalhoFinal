@@ -26,16 +26,28 @@ https://www.iconfinder.com
 
 ## Preview:
 
+
+### Tela de Login
 ![Preview1](./telaLogin.png)
 
+
+### Tela de Cadastro para Usuários que não tem nenhum cadastro prévio.
 ![Preview2](./telaCadastroNovo.png)
 
+
+### Tela Principal
 ![Preview3](./telaPrincipal.png)
 
+
+### Tela de Cadastro de Usuários
 ![Preview4](./telaCadastroUsuario.png)
 
+
+### Tela de Cadastro de Clientes
 ![Preview5](./telaCadastroCliente.png)
 
+
+### Tela Agenda (para registro de eventos ou compromissos)
 ![Preview6](./telaAgenda.png)
 
 ![Footer](./Footer.gif)
