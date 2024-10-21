@@ -63,10 +63,12 @@ para o programa, a maioria dos ícones foram todos tirados gratuitamente do site
 ## Instruções de execução e conexão com o banco de dados local
 
 
-### Execução
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus molestie dui eget convallis. Vivamus quis sapien eu metus sodales efficitur eu sit amet metus. Donec nec aliquet orci. Nullam hendrerit auctor velit. Proin pharetra elit ut turpis dictum eleifend. Etiam dignissim fringilla urna, at dignissim lectus lacinia non. Morbi eget lacinia eros.
+## Execução
+O usuário será apresentado com uma tela de login, onde deverá colocar o seu nome de usuário e sua senha, caso o usuário não exista, o mesmo pode fazer cadastro para acessar o sistema. À partir disso, ele poderá escolher em uma barra de menu as seguintes opções: Cadastro de Usuários, Clientes, Agenda e Sair.
 
-Aliquam ut aliquam augue. Phasellus gravida mi vitae libero feugiat auctor. Nulla sed dignissim dui, id pretium nisi. Suspendisse maximus sapien at pulvinar posuere. Sed eleifend lorem eget libero pulvinar, eu dictum ex tristique. Praesent dignissim interdum dolor, vel viverra nibh facilisis eu. Quisque mattis metus sit amet orci laoreet dapibus id at lorem. Sed volutpat elit ac egestas vestibulum. Mauris tristique lobortis eros eget ultricies. Vivamus eget condimentum dolor, et posuere mi. Duis sed erat quam.
+Na tela de cadastro de Usuários, pode se notar que é a mesma coisa que a tela de cadastro quando não se possui um usuário para login, porém a diferença é que você tem acesso à todos os comandos CRUD, podendo efetuar cadastro, edição, remoção e atualização de dados. O mesmo se repete para a tela de clientes, que possui as mesmas funções mas com variáveis à mais, como endereço, telefone, email, cpf e cnpj. Tudo muda na tela de Agenda, onde se deve colocar informações mais complexas e funções diferentes, como atribuir um nome de cliente, uma data, um horário, uma descrição, uma pesquisa que automaticamente filtra os resultados de acordo com as informações jogadas no campo de texto e uma atualização automática na tabela da agenda, que ocorre cada vez que um dos processos do CRUD é feito.
+
+Por fim, há uma função no momento em que você decide sair do programa, que pergunta se você deseja ou não continuar o processo e fechar o programa.
 
 
 ### Conexão 
