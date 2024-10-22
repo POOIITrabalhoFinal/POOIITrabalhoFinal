@@ -37,7 +37,7 @@ para o programa, a maioria dos ícones foram todos tirados gratuitamente do site
 
 
 ### Tela de Login
-![Preview1](./telaLogin.png)
+![Preview1](./telaLoginUpd.png)
 
 
 ### Tela de Cadastro para Usuários que não tem nenhum cadastro prévio.
